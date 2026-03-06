@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+		    data-sap-ui-libs="sap.m"
+		    data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-syntax="complex"
+		    data-sap-ui-resourceroots='{
+		        "aayush":"./"
+		    }'>
+		</script>
+		
+			<script>
+
+			var oView = new sap.ui.view({
+			    viewName: "aayush.view.App",
+			    type: "XML"
+			});
+			
+			var oMain = new sap.ui.view({
+			    viewName: "aayush.view.Product",
+			    type: "XML"
+			});
+			
+
+				
+				oView.byId("idApp").addPage(oMain);
+				oView.placeAt("content");
+				
+			</script>
+		</script>
+		
+	</head>
+	
+	<body class="sapUiBody">
+		<div id="content"></div>
+	</body>
+</html>

@@ -1,0 +1,198 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="aayush.controller.Product">
+
+<!--    <Page title="Product Information">-->
+
+		<Page>
+
+			<customHeader>
+			<Toolbar>
+			
+			<ToolbarSpacer/>
+			
+			<Title text="Product Information"/>
+			
+			<ToolbarSpacer/>
+			
+			</Toolbar>
+			</customHeader>
+    
+    	<Panel headerText="Enter Product Information">
+			
+			<Label text="Enter Product ID"/>
+			<Input id="searchId"/>
+			
+		</Panel>
+
+
+		
+		<Panel visible="{/editVisible}">
+		
+		<f:SimpleForm id="editForm"
+			    editable="true"
+			    layout="ResponsiveGridLayout"
+			    title="Edit Product">
+		<Toolbar>
+
+			<Button text="Update" press="onUpdateProduct"/>
+			
+<!--			<Button text="Delete" press="onDeleteProduct"/>-->
+			
+		</Toolbar>
+			<f:content>
+			
+			<Label text="Product ID"/>
+			<Text id="outProductId" text="{/editPayload/productId}"/>
+			
+			<Label text="Product Name"/>
+			<Input value="{/editPayload/name}"/>
+			
+			<Label text="Product Type"/>
+			<Input value="{/editPayload/type}"/>
+			
+			<Label text="Product Sector"/>
+			<Input value="{/editPayload/sector}"/>
+			
+			<Label text="Product Group"/>
+			<Input value="{/editPayload/group}"/>
+			
+			<Label text="Product UOM"/>
+			<Input value="{/editPayload/uom}"/>
+			
+			</f:content>
+			
+			</f:SimpleForm>
+			
+								
+			</Panel>
+			
+		<Button text="Edit"
+	        press="onEditProduct"
+	        visible="{/editButtonVisible}"/>
+
+
+
+        <f:SimpleForm
+            id="SimpleFormChange354wide"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            title="Enter Product Details"
+            labelSpanXL="4"
+            labelSpanL="3"
+            labelSpanM="4"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="4"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsXL="2"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false">
+
+
+<!--Make a form that contains label and input field.-->
+            <f:content>
+
+				<Label text="Product_Name"/>
+				<Input id="name" value="{/postPayload/name}"/>
+							
+				<Label text="Product_Type"/>
+				<Input id="type" value="{/postPayload/type}"/>
+				
+				<Label text="Product_Sector"/>
+				<Input id="sector" value="{/postPayload/sector}"/>
+				
+				<Label text="Product_Group"/>
+				<Input id="group" value="{/postPayload/group}"/>
+				
+				<Label text="Product_UOM"/>
+				<Input id="uom" value="{/postPayload/uom}"/>
+
+            </f:content>
+        </f:SimpleForm>
+        
+        
+			<Panel headerText="Load Product Information">
+			
+			<Button text="Load Data" press="onLoadData"/>
+			
+			</Panel>
+
+
+<Panel>
+<!--Creating a table to display the poduct data when loaded.-->
+        <!-- selectionMode="Single" this will de -->
+ <t:Table id="idTable"
+    selectionMode="MultiToggle"
+    selectionBehavior="Row"
+ >
+
+    <t:columns>
+
+        <t:Column>
+            <Label text="Product_ID"/>
+            <t:template>
+                <Text text="{productId}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column>
+            <Label text="Product_Name"/>
+            <t:template>
+                <Text text="{name}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column>
+            <Label text="Product_Type"/>
+            <t:template>
+                <Text text="{type}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column>
+            <Label text="Product_Sector"/>
+            <t:template>
+                <Text text="{sector}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column>
+            <Label text="Product_Group"/>
+            <t:template>
+                <Text text="{group}"/>
+            </t:template>
+        </t:Column>
+
+        <t:Column>
+            <Label text="Product_UOM"/>
+            <t:template>
+                <Text text="{uom}"/>
+            </t:template>
+        </t:Column>
+
+    </t:columns>
+
+</t:Table>
+
+</Panel>
+
+<footer>
+	<Toolbar>
+	  <Button text="Save" press="onSave"></Button>
+	  <Button text="Delete" press="onDeleteSelected"></Button>
+	</Toolbar>
+</footer>
+
+
+
+    </Page>
+
+</mvc:View>
